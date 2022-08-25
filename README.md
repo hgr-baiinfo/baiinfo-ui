@@ -1,4 +1,4 @@
-# baiinfo-c
+# baiinfo-ui2
 
 ## Project setup
 ```
