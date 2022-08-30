@@ -1,12 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
 
-import 'mooc-ui/dist/css/index.css'
-import Mui from 'mooc-ui'
-Vue.use(Mui)
+import "../components/css/index.scss";
+import BUI from "../components/lib";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import router from "./router";
 
-Vue.config.productionTip = false
+Vue.use(ElementUI);
+
+Vue.use(BUI);
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  render: (h) => h(App),
+}).$mount("#app");

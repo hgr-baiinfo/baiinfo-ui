@@ -1,13 +1,13 @@
 module.exports = {
-  title: 'Mooc-UI',
-  description: 'Just playing around',
-  base: "/moocUI/",
+  title: "baiinfo-ui",
+  description: "baiinfo-ui",
+  base: "/baiinfo-ui/",
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Github', link: 'https://github.com/Zack921/moocUI' },
-      { text: 'VuePress', link: 'https://vuepress.vuejs.org/' },
+      { text: "Home", link: "/" },
+      { text: "Github", link: "https://github.com/hgr-baiinfo/baiinfo-ui " },
+      { text: "VuePress", link: "https://vuepress.vuejs.org/" },
     ],
-    sidebar: ['/', '/componentDocs/card']
-  }
-}
+    sidebar: ["/", "/componentDocs/card"],
+  },
+};

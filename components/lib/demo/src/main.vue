@@ -1,9 +1,11 @@
 <template>
-  <h1 class="m-demo">Demo</h1>
+  <h1 class="bi-demo">
+    <el-button>按钮</el-button>
+  </h1>
 </template>
 
 <script>
 export default {
-  name: 'Demo'
-}
+  name: "Demo",
+};
 </script>

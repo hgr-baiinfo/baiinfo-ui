@@ -1,12 +1,15 @@
 <template>
-  <div class="m-card" :style="width ? {width: width + 'px'} : {}">
-    <div class="m-card-img" :style="imgHeight ? {height: imgHeight + 'px'} : {}">
-      <img :src="imgSrc" alt="img">
+  <div class="bi-card" :style="width ? { width: width + 'px' } : {}">
+    <div
+      class="bi-card-img"
+      :style="imgHeight ? { height: imgHeight + 'px' } : {}"
+    >
+      <img :src="imgSrc" alt="img" />
     </div>
-    <div v-if="summary" class="m-card-summary">
-      {{summary}}
+    <div v-if="summary" class="bi-card-summary">
+      {{ summary }}
     </div>
-    <div v-else class="m-card-summary">
+    <div v-else class="bi-card-summary">
       <slot></slot>
     </div>
     <slot name="footer"></slot>
@@ -16,7 +19,7 @@
 <script>
 // 卡片组件
 export default {
-  name: 'm-card',
+  name: "bi-card",
   props: {
     width: {
       type: Number,
@@ -24,7 +27,7 @@ export default {
     },
     imgSrc: {
       type: String,
-      default: '',
+      default: "",
     },
     imgHeight: {
       type: Number,
@@ -32,8 +35,8 @@ export default {
     },
     summary: {
       type: String,
-      default: '',
+      default: "",
     },
   },
-}
+};
 </script>

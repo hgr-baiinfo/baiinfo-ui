@@ -4,14 +4,14 @@
 
 ```javascript
 // 全部引入
-import 'mooc-ui/dist/css/index.css'
-import MUI from "mooc-ui";
-Vue.use(MUI);
+import 'baiinfo-ui/dist/css/index.css'
+import BUI from "baiinfo-ui";
+Vue.use(BUI);
 
 // 按需引入
-import 'mooc-ui/dist/css/demo.css'
-import { Demo } from "mooc-ui";
+import 'baiinfo-ui/dist/css/demo.css'
+import { Demo } from "baiinfo-ui";
 Vue.use(Demo);
 ```
 
-Copyright (c) 2021-present zack
+Copyright (c) 2022-present baiinfo
