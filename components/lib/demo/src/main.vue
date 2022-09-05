@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "Demo",
+  name: "bi-demo",
 };
 </script>

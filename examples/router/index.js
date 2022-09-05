@@ -24,6 +24,10 @@ const routes = [
         path: "/button",
         component: () => import("../views/button/index.vue"),
       },
+      {
+        path: "/button-tab",
+        component: () => import("../views/button-tab/index.vue"),
+      },
     ],
   },
 ];

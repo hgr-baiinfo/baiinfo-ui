@@ -21,7 +21,7 @@ export default {
         },
         {
           icon: "Demo",
-          name: "按钮1",
+          name: "Demo",
           index: "/demo",
         },
         {
@@ -31,8 +31,13 @@ export default {
         },
         {
           icon: "Button",
-          name: "按钮2",
+          name: "按钮",
           index: "/button",
+        },
+        {
+          icon: "Button-tab",
+          name: "按钮tab",
+          index: "/button-tab",
         },
       ],
       router: true,
