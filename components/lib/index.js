@@ -1,12 +1,14 @@
 import Demo from "./demo";
 import Card from "./card";
 import Button from "./button";
+import ButtonTab from './button-tab';
 import { version } from "../../package.json";
 
 const components = {
   Demo,
   Card,
   Button,
+  ButtonTab
 };
 
 const install = function(Vue) {

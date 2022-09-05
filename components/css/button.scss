@@ -1,0 +1,51 @@
+.btn {
+  display: inline-block;
+  border: 1px solid #dcdfe6;
+  font-size: 14px;
+  text-align: center;
+  color: #606266;
+  cursor: pointer;
+}
+.dialog-btn {
+  min-width: 90px;
+  height: 36px;
+  line-height: 36px;
+}
+.dialog-btn:hover {
+  border-color: #c43233;
+  background-color: #fff8f8;
+  color: #c43233;
+}
+.default {
+  min-width: 98px;
+  height: 40px;
+  line-height: 40px;
+}
+.default:hover {
+  border-color: #c43233;
+  background-color: #fff8f8;
+  color: #c43233;
+}
+.disabled,
+.disabled:hover {
+  color: #dcdfe6;
+  background: #f7f7f7;
+  border-color: #dcdfe6;
+}
+.primary {
+  background: #c43233;
+  color: #fff;
+  border-color: #c43233;
+  min-width: 90px;
+  height: 36px;
+  line-height: 36px;
+}
+.primary:hover {
+  background: #d33e3f;
+}
+.primary.disabled,
+.primary.disabled:hover {
+  background: #eabdbe;
+  border-color: #eabdbe;
+  color: #fff;
+}

@@ -37,7 +37,21 @@ module.exports = {
             loader: 'vue-loader',
           }
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'sass-loader',
+          'css-loader',
+        ]
+      }      
     ]
   },
 };

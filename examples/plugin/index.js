@@ -1,4 +1,5 @@
 import Vue from "vue";
+import '../../dist/css/index.css';
 
 import BiButton from "../../components/lib/button";
 Vue.use(BiButton);
