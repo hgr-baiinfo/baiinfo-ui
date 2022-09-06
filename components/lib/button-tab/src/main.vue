@@ -57,10 +57,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    width: {
-      type: String,
-      default: "140px",
-    },
     list: {
       type: Array,
       default() {
