@@ -5,9 +5,18 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
-      { text: "Github", link: "https://github.com/hgr-baiinfo/baiinfo-ui " },
+      { text: "Github", link: "https://github.com/hgr-baiinfo/baiinfo-ui" },
       { text: "VuePress", link: "https://vuepress.vuejs.org/" },
     ],
-    sidebar: ["/", "/componentDocs/card"],
+    sidebar: [
+        "/",
+      "/componentDocs/card",
+      "/componentDocs/button",
+      "/componentDocs/buttonTab",
+    ],
   },
+  chainWebpack (config) {
+    config.resolve.alias.set('core-js/library/fn', 'core-js/features');
+  }
 };
+
