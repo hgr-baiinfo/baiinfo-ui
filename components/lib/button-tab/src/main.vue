@@ -1,28 +1,61 @@
 <template>
-  <div class="bi-button-tab" :style="{ width: width }">
-    <span
+  <el-radio-group
+    v-model="radioValue"
+    class="bi-btn-tabs"
+    :size="size"
+    :class="{ border: border }"
+  >
+    <el-radio-button
+      :label="item.label"
       v-for="(item, index) in list"
       :key="index"
-      class="tab-item"
-      @click="change(item, index)"
-      :class="[`${currentIndex == index ? 'current' : 'hovered'}`, `${type}`]"
-    >
-      {{ item.label }}
-    </span>
-  </div>
+    ></el-radio-button>
+  </el-radio-group>
 </template>
 <script>
 export default {
   name: "bi-button-tab",
+  model: {
+    prop: "radio",
+    event: "change",
+  },
   data() {
     return {
-      currentIndex: 0,
+      radioValue: "",
     };
   },
+  watch: {
+    radio: {
+      handler(val) {
+        this.radioValue = val;
+      },
+      immediate: true,
+      deep: true,
+    },
+    radioValue: {
+      handler(val) {
+        this.change(val);
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
   props: {
-    type: {
+    radio: {
+      type: [String, Number],
+      default: "",
+    },
+    valueProps: {
       type: String,
-      default: "default",
+      default: "label",
+    },
+    size: {
+      type: String,
+      default: "",
+    },
+    border: {
+      type: Boolean,
+      default: false,
     },
     width: {
       type: String,
@@ -36,9 +69,9 @@ export default {
     },
   },
   methods: {
-    change(item, index) {
-      this.currentIndex = index;
-      this.$emit("change", item.value, item);
+    change(val) {
+      let obj = this.list.find((item) => item.label == val);
+      this.$emit("change", val, obj);
     },
   },
 };

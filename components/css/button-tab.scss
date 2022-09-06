@@ -1,61 +1,21 @@
-.bi-button-tab {
-  display: flex;
-  justify-content: space-between;
-  border-collapse: collapse;
-  display: flex;
-  justify-content: space-between;
-  border-collapse: collapse;
-  .tab-item {
-    height: 40px;
-    line-height: 36px;
-    box-sizing: border-box;
-    border: 1px solid #dcdfe6;
-    cursor: pointer;
-    flex: 1;
-    padding-left: 4px;
-    padding-right: 4px;
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-    font-family: SourceHanSansCN-Regular;
-    font-weight: 400;
-    color: #333333;
-    box-sizing: border-box;
-    border-collapse: collapse;
-    border-left: none;
-    min-width: 70px;
-    background: #fff;
-  }  
+.bi-btn-tabs .el-radio-button:first-child .el-radio-button__inner{
+  border-radius:0;
 }
-
-.bi-button-tab .tab-item:first-of-type {
-  border-left: 1px solid #dcdfe6;
+.bi-btn-tabs .el-radio-button:last-child .el-radio-button__inner{
+  border-radius:0;
 }
-.bi-button-tab .current {
-  background: #c43233;
-  color: #fff;
+.bi-btn-tabs .el-radio-button__orig-radio:checked+.el-radio-button__inner{
+  color: #FFF;
+  background-color: #c43233;
+  border-color: #c43233;
+  box-shadow: -1px 0 0 0 #c43233;
 }
-.bi-button-tab .current:first-of-type {
-  border-left: 1px solid #c43233;
+.bi-btn-tabs .el-radio-button__inner:hover{
+  color:#c43233;
 }
-.bi-button-tab .small {
-  height: 30px;
-  line-height: 27px;
-}
-
-.bi-button-tab .hovered:hover {
+.bi-btn-tabs.border .el-radio-button__orig-radio:checked+.el-radio-button__inner{
   color: #c43233;
-  background: #fff;
-}
-.bi-button-tab .primary.current {
-  border: 1px solid #c43233;
-  background: #fff8f8;
-  color: #c43233;
-}
-
-.bi-button-tab .current:first-of-type {
-  border-left: none;
-}
-.bi-button-tab .primary.current:first-of-type {
-  border-left: 1px solid #c43233;
+  background-color: #fff8f8;
+  border-color: #c43233;
+  box-shadow: -1px 0 0 0 #c43233;
 }
