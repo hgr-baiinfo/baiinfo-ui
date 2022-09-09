@@ -1,20 +1,12 @@
 # Card
 卡片组件
 
-### 示例：
-<br />
-<testCard/>
+<common-code-format>
+  <docsComponents-BiCard-index slot="source"></docsComponents-BiCard-index>
 
-### 代码：
+<<< @/docs/.vuepress/components/docsComponents/BiCard/index.vue
+</common-code-format>
 
-```html
-<template>
-  <bi-card
-    imgSrc="baiinfo.png"
-    summary="baiinfo" 
-  />
-</template>
-```
 
 ## Attributes
 |  参数  |  说明  |  类型  |  是否必要  |  默认值  |

@@ -1,0 +1,28 @@
+.bi-button-nav{
+  width: 100%;
+  border-bottom: 1px solid #dcdfe6;
+  .el-button{
+    border-radius:0;
+    border-bottom:none;
+  }
+  .el-button:focus{
+    color: #fff;
+    border-color: #c43233;
+    background-color: #c43233;
+  }
+  .el-button:hover{
+    color: #d33e3f;
+    border-color: #d33e3f;
+    background-color: #fff;
+  }
+  .el-button.active{
+    color: #fff;
+    border-color: #c43233;
+    background-color: #c43233;
+  }    
+  .el-button.active:hover{
+    color: #fff;
+    border-color: #d05b5c;
+    background-color: #d05b5c;
+  }  
+}

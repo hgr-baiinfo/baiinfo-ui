@@ -9,14 +9,14 @@ module.exports = {
       { text: "VuePress", link: "https://vuepress.vuejs.org/" },
     ],
     sidebar: [
-        "/",
+      "/",
       "/componentDocs/card",
       "/componentDocs/button",
       "/componentDocs/buttonTab",
+      "/componentDocs/buttonNav",
     ],
   },
-  chainWebpack (config) {
-    config.resolve.alias.set('core-js/library/fn', 'core-js/features');
-  }
+  chainWebpack(config) {
+    config.resolve.alias.set("core-js/library/fn", "core-js/features");
+  },
 };
-

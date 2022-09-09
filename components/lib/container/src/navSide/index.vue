@@ -39,6 +39,11 @@ export default {
           name: "按钮tab",
           index: "/button-tab",
         },
+        {
+          icon: "Button-nav",
+          name: "按钮nav",
+          index: "/button-nav",
+        },
       ],
       router: true,
       defaultActive: "",

@@ -28,6 +28,10 @@ const routes = [
         path: "/button-tab",
         component: () => import("../views/button-tab/index.vue"),
       },
+      {
+        path: "/button-nav",
+        component: () => import("../views/button-nav/index.vue"),
+      },
     ],
   },
 ];
