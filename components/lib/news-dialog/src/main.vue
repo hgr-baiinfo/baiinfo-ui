@@ -1,56 +1,52 @@
 <template>
-  <div v-if="visible">
-    <el-dialog
-      class="bi-news-dialog"
-      :visible.sync="dialogVisible"
-      width="68%"
-      :show-close="false"
-      center
-      :before-close="beforeClose"
-    >
-      <div class="dialog-header">
-        <div class="left">
-          <span>{{ dialogInfo.source }}</span>
-          <span>{{ dialogInfo.addTime }}</span>
-          <span>{{ dialogInfo.keywords }}</span>
-        </div>
-        <div class="right">{{ dialogInfo.browseCount }}&nbsp;&nbsp;阅读</div>
+  <el-dialog
+    class="bi-news-dialog"
+    :visible.sync="dialogVisible"
+    width="68%"
+    :show-close="false"
+    center
+    :before-close="beforeClose"
+  >
+    <div class="dialog-header">
+      <div class="left">
+        <span>{{ dialogInfo.source }}</span>
+        <span>{{ dialogInfo.addTime }}</span>
+        <span>{{ dialogInfo.keywords }}</span>
       </div>
-      <div class="dialog-content">
-        <div class="title">
-          <span>{{ dialogInfo.newsTitle }}</span>
-          <img
-            :src="collectionSrc"
-            alt=""
-            class="star"
-            @click="toggleCollection(dialogInfo)"
-          />
-        </div>
-        <p class="content" v-html="dialogInfo.content"></p>
+      <div class="right">{{ dialogInfo.browseCount }}&nbsp;&nbsp;阅读</div>
+    </div>
+    <div class="dialog-content">
+      <div class="title">
+        <span>{{ dialogInfo.newsTitle }}</span>
+        <img
+          :src="collectionSrc"
+          alt=""
+          class="star"
+          @click="toggleCollection(dialogInfo)"
+        />
       </div>
-      <div class="dialog-footer">
-        <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
-        <div class="close-btn"><span @click="close">关闭</span></div>
-        <div class="pre-next">
-          <p class="link" :class="{ gray: preText == '无' }">
-            上一篇：
-            <span @click="link('pre', dialogInfo)">{{ preText }}</span>
-          </p>
-          <p class="link" :class="{ gray: nextText == '无' }">
-            下一篇：<span @click="link('next', dialogInfo)">{{
-              nextText
-            }}</span>
-          </p>
-        </div>
+      <p class="content" v-html="dialogInfo.content"></p>
+    </div>
+    <div class="dialog-footer">
+      <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
+      <div class="close-btn"><span @click="close">关闭</span></div>
+      <div class="pre-next">
+        <p class="link" :class="{ gray: preText == '无' }">
+          上一篇：
+          <span @click="link('pre', dialogInfo)">{{ preText }}</span>
+        </p>
+        <p class="link" :class="{ gray: nextText == '无' }">
+          下一篇：<span @click="link('next', dialogInfo)">{{ nextText }}</span>
+        </p>
       </div>
-    </el-dialog>
-  </div>
+    </div>
+  </el-dialog>
 </template>
 <script>
 export default {
   name: "bi-news-dialog",
   props: {
-    visible: {
+    show: {
       type: Boolean,
       default: false,
     },
@@ -72,6 +68,10 @@ export default {
       },
     },
   },
+  model: {
+    prop: "show", // 设置对应v-model的属性字段
+    event: "close", // 如果不指定默认为input，当$emit该事件，可以自动执行 修改父组件v-model参数的值
+  },
   computed: {
     preText() {
       let res = this.dialogInfo.newsTitleUp;
@@ -88,28 +88,21 @@ export default {
       }
       return res;
     },
-  },
-  watch: {
-    visible: {
-      handler(val) {
-        this.dialogVisible = val;
-      },
-      immediate: true,
-    },
     dialogVisible: {
-      handler(val) {
-        this.$emit("update:visible", val);
+      get: function () {
+        return this.show;
       },
-      immediate: true,
+      set: function (val) {
+        this.$emit("close", val);
+      },
     },
   },
   methods: {
     beforeClose() {
-      this.$emit("update:visible", false);
+      this.$emit("close", false);
     },
     close() {
       this.dialogVisible = false;
-      this.$emit("update:visible", false);
     },
     link(type, info) {
       this.$emit("change", type, info);

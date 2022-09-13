@@ -2,7 +2,7 @@
   <div>
     <bi-button @click="visible = true">打开弹窗</bi-button>
     <bi-news-dialog
-      :visible.sync="visible"
+      v-model="visible"
       :dialogInfo="dialogInfo"
       @change="articleChange"
       @collection="toggleCollection"
