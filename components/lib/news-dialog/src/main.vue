@@ -88,8 +88,8 @@ export default {
     },
   },
   model: {
-    prop: "show", // 设置对应v-model的属性字段
-    event: "close", // 如果不指定默认为input，当$emit该事件，可以自动执行 修改父组件v-model参数的值
+    prop: "show",
+    event: "close",
   },
   computed: {
     preText() {
