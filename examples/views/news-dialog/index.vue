@@ -1,6 +1,6 @@
 <template>
   <div>
-    <bi-button @click="visible = true">打开弹窗</bi-button> {{ visible }}
+    <bi-button @click="visible = true">打开弹窗</bi-button>
     <bi-news-dialog
       :visible.sync="visible"
       :dialogInfo="dialogInfo"

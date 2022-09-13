@@ -6,6 +6,7 @@
       width="68%"
       :show-close="false"
       center
+      :before-close="beforeClose"
     >
       <div class="dialog-header">
         <div class="left">
@@ -97,13 +98,15 @@ export default {
     },
     dialogVisible: {
       handler(val) {
-        console.log("---oldv", val);
         this.$emit("update:visible", val);
       },
       immediate: true,
     },
   },
   methods: {
+    beforeClose() {
+      this.$emit("update:visible", false);
+    },
     close() {
       this.dialogVisible = false;
       this.$emit("update:visible", false);
