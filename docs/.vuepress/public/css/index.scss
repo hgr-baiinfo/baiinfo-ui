@@ -5,3 +5,32 @@
 .page-nav{
   max-width: 1180px !important;
 }
+div[class*="language-"]{
+  line-height: 1.8;
+  font-family: Menlo,Monaco,Consolas,Courier,monospace;
+  font-size: 12px;
+  padding: 18px 24px;
+  background-color: #fafafa!important;
+  border: 1px solid #eaeefb;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
+}
+.theme-default-content pre code, .theme-default-content pre[class*="language-"] code{
+  color:#000!important;
+}
+.token.tag, .token.attr-name, .token.namespace, .token.deleted{
+  color: #3182bd!important;
+}
+.token.string, .token.char, .token.attr-value, .token.regex, .token.variable{
+  color: #199949 !important;
+}
+.token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin{
+  color: #756bb1 !important;
+}
+.token.property, .token.class-name, .token.constant, .token.symbol{
+  color: #199949 !important;
+}
+.token.boolean, .token.number, .token.function{
+  color: #199949 !important;
+}

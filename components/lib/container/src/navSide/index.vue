@@ -44,6 +44,11 @@ export default {
           name: "按钮nav",
           index: "/button-nav",
         },
+        {
+          icon: "NewsDialog",
+          name: "新闻内容弹窗",
+          index: "/news-dialog",
+        },
       ],
       router: true,
       defaultActive: "",

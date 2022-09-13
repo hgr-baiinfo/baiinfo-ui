@@ -15,3 +15,6 @@ Vue.use(BiBtnTab);
 
 import BiBtnNav from "../../components/lib/button-nav";
 Vue.use(BiBtnNav);
+
+import BiNewsDialog from "../../components/lib/news-dialog";
+Vue.use(BiNewsDialog);

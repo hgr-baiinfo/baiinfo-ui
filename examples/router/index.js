@@ -32,6 +32,10 @@ const routes = [
         path: "/button-nav",
         component: () => import("../views/button-nav/index.vue"),
       },
+      {
+        path: "/news-dialog",
+        component: () => import("../views/news-dialog/index.vue"),
+      },
     ],
   },
 ];

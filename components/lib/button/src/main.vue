@@ -1,5 +1,8 @@
 <template>
-  <span :class="['btn', btnType, disabled ? 'disabled' : '']">
+  <span
+    :class="['btn', btnType, disabled ? 'disabled' : '']"
+    @click="$emit('click')"
+  >
     <slot></slot>
   </span>
 </template>
