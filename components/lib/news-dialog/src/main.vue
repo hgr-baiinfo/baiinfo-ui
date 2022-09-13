@@ -9,15 +9,17 @@
   >
     <div class="dialog-header">
       <div class="left">
-        <span>{{ dialogInfo.source }}</span>
-        <span>{{ dialogInfo.addTime }}</span>
-        <span>{{ dialogInfo.keywords }}</span>
+        <span>{{ dialogInfo[defaultProps.source] }}</span>
+        <span>{{ dialogInfo[defaultProps.addTime] }}</span>
+        <span>{{ dialogInfo[defaultProps.keywords] }}</span>
       </div>
-      <div class="right">{{ dialogInfo.browseCount }}&nbsp;&nbsp;阅读</div>
+      <div class="right">
+        {{ dialogInfo[defaultProps.browseCount] }}&nbsp;&nbsp;阅读
+      </div>
     </div>
     <div class="dialog-content">
       <div class="title">
-        <span>{{ dialogInfo.newsTitle }}</span>
+        <span>{{ dialogInfo[defaultProps.newsTitle] }}</span>
         <img
           :src="collectionSrc"
           alt=""
@@ -25,7 +27,7 @@
           @click="toggleCollection(dialogInfo)"
         />
       </div>
-      <p class="content" v-html="dialogInfo.content"></p>
+      <p class="content" v-html="dialogInfo[defaultProps.content]"></p>
     </div>
     <div class="dialog-footer">
       <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
@@ -49,6 +51,23 @@ export default {
     show: {
       type: Boolean,
       default: false,
+    },
+    defaultProps: {
+      type: Object,
+      default() {
+        return {
+          newsTitle: "newsTitle",
+          isCollection: "isCollection",
+          source: "source",
+          browseCount: "browseCount",
+          addTime: "addTime",
+          content: "content",
+          newsIdUp: "newsIdUp",
+          newsTitleUp: "newsTitleUp",
+          newsIdDown: "newsIdDown",
+          newsTitleDown: "newsTitleDown",
+        };
+      },
     },
     dialogInfo: {
       type: Object,
@@ -74,16 +93,16 @@ export default {
   },
   computed: {
     preText() {
-      let res = this.dialogInfo.newsTitleUp;
+      let res = this.dialogInfo[this.defaultProps.newsTitleUp];
       return res ? res : "无";
     },
     nextText() {
-      let res = this.dialogInfo.newsTitleDown;
+      let res = this.dialogInfo[this.defaultProps.newsTitleDown];
       return res ? res : "无";
     },
     collectionSrc() {
       let res = require("../assets/collection.png");
-      if (this.dialogInfo.isCollection) {
+      if (this.dialogInfo[this.defaultProps.isCollection]) {
         res = require("../assets/collection-active.png");
       }
       return res;
@@ -108,8 +127,13 @@ export default {
       this.$emit("change", type, info);
     },
     toggleCollection(dialogInfo) {
-      this.dialogInfo.isCollection = !this.dialogInfo.isCollection;
-      this.$emit("collection", this.dialogInfo.isCollection, dialogInfo);
+      this.dialogInfo[this.defaultProps.isCollection] =
+        !this.dialogInfo[this.defaultProps.isCollection];
+      this.$emit(
+        "collection",
+        this.dialogInfo[this.defaultProps.isCollection],
+        dialogInfo
+      );
     },
   },
 };
