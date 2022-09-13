@@ -53,7 +53,7 @@
 </template>
 <script>
 import { collection, collectionActive } from "../assets/img.js";
-import { debounce } from "../../../utils";
+import debounce from "lodash/debounce";
 let self;
 export default {
   name: "bi-news-dialog",
