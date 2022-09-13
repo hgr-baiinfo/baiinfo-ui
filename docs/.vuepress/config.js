@@ -14,6 +14,7 @@ module.exports = {
       "/componentDocs/button",
       "/componentDocs/buttonTab",
       "/componentDocs/buttonNav",
+      "/componentDocs/newsDialog",
     ],
   },
   chainWebpack(config) {
