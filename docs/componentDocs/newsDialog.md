@@ -14,6 +14,7 @@
 | visible  | 是否显示 Dialog | Boolean      | true | false | -  |
 | dialogInfo  | 新闻弹窗参数 | Object     |   true  |                  详见dialogInfo     | -|
 | defaultProps  | dialogInfo的props | Object    | true    |            详见defaultProps      | -|
+| loading  | 加载内容loading | Boolean    | false    |            -      | -|
 | change  | 上/下一篇 | event    | false    |      -            | function(type, info){}|
 | collection  | 收藏 | event    | false    |      -            | function(value, info){}|
 

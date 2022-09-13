@@ -1,6 +1,6 @@
 {
   "name": "baiinfo-ui2",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "基于vue的管理端组件库",
   "main": "dist/index.umd.js",
   "keywords": [
@@ -25,7 +25,7 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
-    "baiinfo-ui2": "0.0.7",
+    "baiinfo-ui2": "0.0.8",
     "core-js": "^3.6.5",
     "element-ui": "=2.15.6",
     "vue": "^2.6.11",

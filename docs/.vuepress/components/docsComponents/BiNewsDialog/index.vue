@@ -4,6 +4,7 @@
     <bi-news-dialog
       v-model="visible"
       :dialogInfo="dialogInfo"
+      :loading="loading"
       @change="articleChange"
       :defaultProps="newDialogProps"
       @collection="toggleCollection"
@@ -44,27 +45,32 @@ export default {
         newsTitleDown:
           "美国商务部正打算基于早些时候向三家美国芯片生产设备公司下达的出口限制发布新的规定",
       },
+      loading: false,
     };
   },
   methods: {
     articleChange(type, info) {
       console.log("type", type, info);
-      if (type == "next") {
-        console.log("dd");
-        this.dialogInfo = {
-          n: "普京称俄采取一系列措施后经济未出现大幅下滑",
-          is: false,
-          key: "关键字：普京",
-          so: "新闻中心",
-          bc: "122",
-          aTime: "2022-08-16 11:20:07",
-          cont: "“今日俄罗斯”电视台最新报道，俄罗斯总统普京12日在一场关于经济问题的会议上说，在俄罗斯政府采取一系列措施后，俄经济未出现大幅下滑。据俄新社报道，谈及俄政府采取的稳定经济的措施，普京当天在会议上说，“我们迅速采取了有效保护措施，启动扶持关键领域、骨干企业以及中小企业的机制。所有这些措施和机制旨在保护就业和工作岗位，有针对性地向我们的民众提供帮助，首先是有孩子的家庭和退休人员。采取这一系列措施的结果就是，我们没有让经济大幅下滑，快速地稳住了通货膨胀”",
-          newsIdUp: "12",
-          newsTitleUp: "",
-          newsIdDown: "33",
-          newsTitleDown: "普京称“去美元化”进程不可避免",
-        };
-      }
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        if (type == "next") {
+          console.log("dd");
+          this.dialogInfo = {
+            n: "普京称俄采取一系列措施后经济未出现大幅下滑",
+            is: false,
+            key: "关键字：普京",
+            so: "新闻中心",
+            bc: "122",
+            aTime: "2022-08-16 11:20:07",
+            cont: "“今日俄罗斯”电视台最新报道，俄罗斯总统普京12日在一场关于经济问题的会议上说，在俄罗斯政府采取一系列措施后，俄经济未出现大幅下滑。据俄新社报道，谈及俄政府采取的稳定经济的措施，普京当天在会议上说，“我们迅速采取了有效保护措施，启动扶持关键领域、骨干企业以及中小企业的机制。所有这些措施和机制旨在保护就业和工作岗位，有针对性地向我们的民众提供帮助，首先是有孩子的家庭和退休人员。采取这一系列措施的结果就是，我们没有让经济大幅下滑，快速地稳住了通货膨胀”",
+            newsIdUp: "12",
+            newsTitleUp: "",
+            newsIdDown: "33",
+            newsTitleDown: "普京称“去美元化”进程不可避免",
+          };
+        }
+      }, 3000);
     },
     toggleCollection(value, info) {
       console.log("toggleCollection", value, info);

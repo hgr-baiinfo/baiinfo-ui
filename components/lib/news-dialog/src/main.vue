@@ -7,43 +7,46 @@
     center
     :before-close="beforeClose"
   >
-    <div class="dialog-header">
-      <div class="left">
-        <span>{{ dialogInfo[defaultProps.source] }}</span>
-        <span>{{ dialogInfo[defaultProps.addTime] }}</span>
-        <span>{{ dialogInfo[defaultProps.keywords] }}</span>
+    <div v-loading="loading">
+      <div class="dialog-header">
+        <div class="left">
+          <span>{{ dialogInfo[defaultProps.source] }}</span>
+          <span>{{ dialogInfo[defaultProps.addTime] }}</span>
+          <span>{{ dialogInfo[defaultProps.keywords] }}</span>
+        </div>
+        <div class="right">
+          {{
+            dialogInfo[defaultProps.browseCount]
+              ? dialogInfo[defaultProps.browseCount]
+              : 0
+          }}&nbsp;&nbsp;阅读
+        </div>
       </div>
-      <div class="right">
-        {{
-          dialogInfo[defaultProps.browseCount]
-            ? dialogInfo[defaultProps.browseCount]
-            : 0
-        }}&nbsp;&nbsp;阅读
+      <div class="dialog-content">
+        <div class="title">
+          <span>{{ dialogInfo[defaultProps.newsTitle] }}</span>
+          <img
+            :src="collectionSrc"
+            alt=""
+            class="star"
+            @click="toggleCollection(dialogInfo)"
+          />
+        </div>
+        <p class="content" v-html="dialogInfo[defaultProps.content]"></p>
       </div>
-    </div>
-    <div class="dialog-content">
-      <div class="title">
-        <span>{{ dialogInfo[defaultProps.newsTitle] }}</span>
-        <img
-          :src="collectionSrc"
-          alt=""
-          class="star"
-          @click="toggleCollection(dialogInfo)"
-        />
-      </div>
-      <p class="content" v-html="dialogInfo[defaultProps.content]"></p>
-    </div>
-    <div class="dialog-footer">
-      <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
-      <div class="close-btn"><span @click="close">关闭</span></div>
-      <div class="pre-next">
-        <p class="link" :class="{ gray: preText == '无' }">
-          上一篇：
-          <span @click="link('pre', dialogInfo)">{{ preText }}</span>
-        </p>
-        <p class="link" :class="{ gray: nextText == '无' }">
-          下一篇：<span @click="link('next', dialogInfo)">{{ nextText }}</span>
-        </p>
+      <div class="dialog-footer">
+        <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
+        <div class="close-btn"><span @click="close">关闭</span></div>
+        <div class="pre-next">
+          <p class="link" :class="{ gray: preText == '无' }">
+            上一篇：<span @click="link('pre', dialogInfo)">{{ preText }}</span>
+          </p>
+          <p class="link" :class="{ gray: nextText == '无' }">
+            下一篇：<span @click="link('next', dialogInfo)">{{
+              nextText
+            }}</span>
+          </p>
+        </div>
       </div>
     </div>
   </el-dialog>
@@ -54,6 +57,10 @@ export default {
   name: "bi-news-dialog",
   props: {
     show: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
       type: Boolean,
       default: false,
     },
