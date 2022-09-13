@@ -14,7 +14,11 @@
         <span>{{ dialogInfo[defaultProps.keywords] }}</span>
       </div>
       <div class="right">
-        {{ dialogInfo[defaultProps.browseCount] }}&nbsp;&nbsp;阅读
+        {{
+          dialogInfo[defaultProps.browseCount]
+            ? dialogInfo[defaultProps.browseCount]
+            : 0
+        }}&nbsp;&nbsp;阅读
       </div>
     </div>
     <div class="dialog-content">
@@ -60,6 +64,7 @@ export default {
           newsTitle: "newsTitle",
           isCollection: "isCollection",
           source: "source",
+          keywords: "keywords",
           browseCount: "browseCount",
           addTime: "addTime",
           content: "content",
@@ -76,6 +81,7 @@ export default {
         return {
           newsTitle: "",
           isCollection: false,
+          keywords: "",
           source: "",
           browseCount: "",
           addTime: "",
@@ -125,7 +131,22 @@ export default {
       this.dialogVisible = false;
     },
     link(type, info) {
-      this.$emit("change", type, info);
+      let obj = {};
+      if (type == "pre") {
+        obj = {
+          id: info.newsIdUp,
+          newsIdUp: info.newsIdUp,
+          newsTitleUp: info.newsTitleUp,
+        };
+      }
+      if (type == "next") {
+        obj = {
+          id: info.newsIdDown,
+          newsIdUp: info.newsIdDown,
+          newsTitleUp: info.newsTitleDown,
+        };
+      }
+      this.$emit("change", type, obj);
     },
     toggleCollection(dialogInfo) {
       this.dialogInfo[this.defaultProps.isCollection] =

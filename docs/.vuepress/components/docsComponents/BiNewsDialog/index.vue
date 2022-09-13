@@ -21,6 +21,7 @@ export default {
         newsTitle: "n",
         isCollection: "is",
         source: "so",
+        keywords: "key",
         browseCount: "bc",
         addTime: "aTime",
         content: "cont",
