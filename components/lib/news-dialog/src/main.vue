@@ -45,6 +45,7 @@
   </el-dialog>
 </template>
 <script>
+import { collection, collectionActive } from "../assets/img.js";
 export default {
   name: "bi-news-dialog",
   props: {
@@ -101,9 +102,9 @@ export default {
       return res ? res : "无";
     },
     collectionSrc() {
-      let res = require("../assets/collection.png");
+      let res = collection;
       if (this.dialogInfo[this.defaultProps.isCollection]) {
-        res = require("../assets/collection-active.png");
+        res = collectionActive;
       }
       return res;
     },
