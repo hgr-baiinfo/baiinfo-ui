@@ -53,6 +53,8 @@
 </template>
 <script>
 import { collection, collectionActive } from "../assets/img.js";
+import { debounce } from "../../../utils";
+let self;
 export default {
   name: "bi-news-dialog",
   props: {
@@ -105,6 +107,9 @@ export default {
     prop: "show",
     event: "close",
   },
+  created() {
+    self = this;
+  },
   computed: {
     preText() {
       let res = this.dialogInfo[this.defaultProps.newsTitleUp];
@@ -137,7 +142,7 @@ export default {
     close() {
       this.dialogVisible = false;
     },
-    link(type, info) {
+    link: debounce((type, info) => {
       let obj = {};
       if (type == "pre") {
         obj = {
@@ -153,17 +158,17 @@ export default {
           newsTitleUp: info.newsTitleDown,
         };
       }
-      this.$emit("change", type, obj);
-    },
-    toggleCollection(dialogInfo) {
-      this.dialogInfo[this.defaultProps.isCollection] =
-        !this.dialogInfo[this.defaultProps.isCollection];
-      this.$emit(
+      self.$emit("change", type, obj);
+    }, 200),
+    toggleCollection: debounce((dialogInfo) => {
+      self.dialogInfo[self.defaultProps.isCollection] =
+        !self.dialogInfo[self.defaultProps.isCollection];
+      self.$emit(
         "collection",
-        this.dialogInfo[this.defaultProps.isCollection],
+        self.dialogInfo[self.defaultProps.isCollection],
         dialogInfo
       );
-    },
+    }, 200),
   },
 };
 </script>

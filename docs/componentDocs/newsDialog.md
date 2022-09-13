@@ -19,7 +19,6 @@
 | collection  | 收藏 | event    | false    |      -            | function(value, info){}|
 
 
-
 ###  defaultProps
 |  参数           | 说明       |    类型   |  默认值       |
 | ----            |------     |-----------|-------       |
