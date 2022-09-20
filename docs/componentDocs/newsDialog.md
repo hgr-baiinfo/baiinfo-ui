@@ -17,7 +17,8 @@
 | loading  | 加载内容loading | Boolean    | false    |            -      | -|
 | change  | 上/下一篇 | event    | false    |      -            | function(type, info){}|
 | collection  | 收藏 | event    | false    |      -            | function(value, info){}|
-
+| showPreAndNext  | 是否展示上一篇下一篇 | boolean    | -    |      true           | |
+| showCollection  | 是否展收藏按钮 | boolean    | -    |      true           | |
 
 ###  defaultProps
 |  参数           | 说明       |    类型   |  默认值       |

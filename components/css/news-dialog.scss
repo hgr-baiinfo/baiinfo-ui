@@ -63,7 +63,7 @@
     }
     .content{
       text-align: justify; 
-      height: 400px;
+      height: 478px;
       // height: 100px;
       width:100%;
       padding-right: 20px;
@@ -145,6 +145,11 @@
           cursor:no-drop;
         }
       }
+    }
+    .footer-placeholder{
+      border-top:1px solid #DCDFE6;
+      width:100%;
+      height:73px;
     }
   }
 }

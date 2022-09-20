@@ -11,6 +11,20 @@
       @close="dialogCloseFn"
     >
     </bi-news-dialog>
+    <div style="margin-top: 50px">无:上一篇，下一篇，收藏</div>
+    <bi-button @click="visible2 = true">打开弹窗</bi-button>
+    <bi-news-dialog
+      v-model="visible2"
+      :dialogInfo="dialogInfo"
+      :loading="loading"
+      @change="articleChange"
+      :showPreAndNext="false"
+      :showCollection="false"
+      :defaultProps="newDialogProps"
+      @collection="toggleCollection"
+      @close="dialogCloseFn"
+    >
+    </bi-news-dialog>
   </div>
 </template>
 <script>
@@ -18,6 +32,9 @@ export default {
   data() {
     return {
       visible: false,
+      visible2: false,
+      showPreAndNext: false,
+      showCollection: false,
       newDialogProps: {
         newsTitle: "n",
         isCollection: "is",

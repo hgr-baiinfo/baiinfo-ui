@@ -28,6 +28,7 @@
           <img
             :src="collectionSrc"
             alt=""
+            v-if="showCollection"
             class="star"
             @click="toggleCollection(dialogInfo)"
           />
@@ -37,7 +38,7 @@
       <div class="dialog-footer">
         <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
         <div class="close-btn"><span @click="close">关闭</span></div>
-        <div class="pre-next">
+        <div class="pre-next" v-if="showPreAndNext">
           <p class="link" :class="{ gray: preText == '无' }">
             上一篇：<span @click="link('pre', dialogInfo)">{{ preText }}</span>
           </p>
@@ -47,6 +48,7 @@
             }}</span>
           </p>
         </div>
+        <div v-else class="footer-placeholder"></div>
       </div>
     </div>
   </el-dialog>
@@ -101,6 +103,14 @@ export default {
           newsTitleDown: "",
         };
       },
+    },
+    showPreAndNext: {
+      type: Boolean,
+      default: true,
+    },
+    showCollection: {
+      type: Boolean,
+      default: true,
     },
   },
   model: {
