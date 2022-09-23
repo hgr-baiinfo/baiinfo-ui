@@ -10,21 +10,21 @@
     <div v-loading="loading">
       <div class="dialog-header">
         <div class="left">
-          <span>{{ dialogInfo[defaultProps.source] }}</span>
-          <span>{{ dialogInfo[defaultProps.addTime] }}</span>
-          <span>{{ dialogInfo[defaultProps.keywords] }}</span>
+          <span>{{ dialogInfo[mergedProps.source] }}</span>
+          <span>{{ dialogInfo[mergedProps.addTime] }}</span>
+          <span>{{ dialogInfo[mergedProps.keywords] }}</span>
         </div>
         <div class="right">
           {{
-            dialogInfo[defaultProps.browseCount]
-              ? dialogInfo[defaultProps.browseCount]
+            dialogInfo[mergedProps.browseCount]
+              ? dialogInfo[mergedProps.browseCount]
               : 0
           }}&nbsp;&nbsp;阅读
         </div>
       </div>
       <div class="dialog-content">
         <div class="title">
-          <span>{{ dialogInfo[defaultProps.newsTitle] }}</span>
+          <span>{{ dialogInfo[mergedProps.newsTitle] }}</span>
           <img
             :src="collectionSrc"
             alt=""
@@ -33,7 +33,7 @@
             @click="toggleCollection(dialogInfo)"
           />
         </div>
-        <p class="content" v-html="dialogInfo[defaultProps.content]"></p>
+        <p class="content" v-html="dialogInfo[mergedProps.content]"></p>
       </div>
       <div class="dialog-footer">
         <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
@@ -71,19 +71,7 @@ export default {
     defaultProps: {
       type: Object,
       default() {
-        return {
-          newsTitle: "newsTitle",
-          isCollection: "isCollection",
-          source: "source",
-          keywords: "keywords",
-          browseCount: "browseCount",
-          addTime: "addTime",
-          content: "content",
-          newsIdUp: "newsIdUp",
-          newsTitleUp: "newsTitleUp",
-          newsIdDown: "newsIdDown",
-          newsTitleDown: "newsTitleDown",
-        };
+        return {};
       },
     },
     dialogInfo: {
@@ -122,19 +110,37 @@ export default {
   },
   computed: {
     preText() {
-      let res = this.dialogInfo[this.defaultProps.newsTitleUp];
+      let res = this.dialogInfo[this.mergedProps.newsTitleUp];
       return res ? res : "无";
     },
     nextText() {
-      let res = this.dialogInfo[this.defaultProps.newsTitleDown];
+      let res = this.dialogInfo[this.mergedProps.newsTitleDown];
       return res ? res : "无";
     },
     collectionSrc() {
       let res = collection;
-      if (this.dialogInfo[this.defaultProps.isCollection]) {
+      if (this.dialogInfo[this.mergedProps.isCollection]) {
         res = collectionActive;
       }
       return res;
+    },
+    mergedProps() {
+      return Object.assign(
+        {
+          newsTitle: "newsTitle",
+          isCollection: "isCollection",
+          source: "source",
+          keywords: "keywords",
+          browseCount: "browseCount",
+          addTime: "addTime",
+          content: "content",
+          newsIdUp: "newsIdUp",
+          newsTitleUp: "newsTitleUp",
+          newsIdDown: "newsIdDown",
+          newsTitleDown: "newsTitleDown",
+        },
+        this.defaultProps
+      );
     },
     dialogVisible: {
       get: function () {
@@ -171,11 +177,11 @@ export default {
       self.$emit("change", type, obj);
     }, 200),
     toggleCollection: debounce((dialogInfo) => {
-      self.dialogInfo[self.defaultProps.isCollection] =
-        !self.dialogInfo[self.defaultProps.isCollection];
+      self.dialogInfo[self.mergedProps.isCollection] =
+        !self.dialogInfo[self.mergedProps.isCollection];
       self.$emit(
         "collection",
-        self.dialogInfo[self.defaultProps.isCollection],
+        self.dialogInfo[self.mergedProps.isCollection],
         dialogInfo
       );
     }, 200),
