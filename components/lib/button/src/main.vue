@@ -1,8 +1,8 @@
 <template>
   <span
+    class="bi-button"
     :class="['btn', btnType, disabled ? 'disabled' : '']"
     @click="clickBtn"
-    v-loading="loading"
   >
     <slot></slot>
   </span>
@@ -19,26 +19,26 @@ export default {
       type: Boolean,
       default: false,
     },
-    debounce:{
-      type:Boolean,
-      default:false
-    }
+    debounce: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data(){
+  data() {
     return {
-      loading:false
-    }
+      loading: false,
+    };
   },
-  methods:{
-    clickBtn(){
-      if(this.debounce){
+  methods: {
+    clickBtn() {
+      if (this.debounce) {
         this.loading = true;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.loading = false;
-        },1000000)
+        }, 1000000);
       }
-      this.$emit('click')
-    }
-  }
+      this.$emit("click");
+    },
+  },
 };
 </script>

@@ -114,11 +114,4 @@ export default {
   min-height: 200px;
 }
 </style>
-<style>
-.el-loading-parent--relative .el-loading-mask {
-  background: rgba(255, 255, 255, 0.5);
-}
-.el-loading-parent--relative .el-loading-mask .el-loading-spinner {
-  opacity: 1;
-}
-</style>
+
