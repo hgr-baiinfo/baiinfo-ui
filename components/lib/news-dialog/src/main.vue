@@ -5,6 +5,7 @@
     width="68%"
     :show-close="false"
     center
+    v-if="dialogVisible"
     :before-close="beforeClose"
   >
     <div v-loading="loading">
@@ -175,7 +176,7 @@ export default {
         };
       }
       self.$emit("change", type, obj);
-    }, 200),
+    }, 100),
     toggleCollection: debounce((dialogInfo) => {
       self.dialogInfo[self.mergedProps.isCollection] =
         !self.dialogInfo[self.mergedProps.isCollection];

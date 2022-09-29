@@ -2,26 +2,25 @@
   <div class="dialog-demo">
     <bi-button @click="visible = true">打开弹窗</bi-button>
     <bi-news-dialog
-      v-model="visible"
-      :dialogInfo="dialogInfo"
-      :loading="loading"
-      @change="articleChange"
-      :defaultProps="newDialogProps"
-      @collection="toggleCollection"
-      @close="dialogCloseFn"
+        v-model="visible"
+        :dialogInfo="dialogInfo"
+        :loading="loading"
+        @change="articleChange"
+        :defaultProps="newDialogProps"
+        @collection="toggleCollection"
+        @close="dialogCloseFn"
     >
     </bi-news-dialog>
     <div style="margin-top: 50px">无:上一篇，下一篇，收藏</div>
     <bi-button @click="visible2 = true">打开弹窗</bi-button>
     <bi-news-dialog
-      v-model="visible2"
-      :dialogInfo="dialogInfo"
-      :loading="loading"
-      @change="articleChange"
-      :showPreAndNext="false"
-      :showCollection="false"
-      :defaultProps="newDialogProps"
-      @close="dialogCloseFn"
+        v-model="visible2"
+        :dialogInfo="dialogInfo"
+        :loading="loading"
+        :showPreAndNext="false"
+        :showCollection="false"
+        :defaultProps="newDialogProps"
+        @close="dialogCloseFn"
     >
     </bi-news-dialog>
   </div>
@@ -54,7 +53,7 @@ export default {
         newsTitleUp: "",
         newsIdDown: "33",
         newsTitleDown:
-          "美国商务部正打算基于早些时候向三家美国芯片生产设备公司下达的出口限制发布新的规定",
+            "美国商务部正打算基于早些时候向三家美国芯片生产设备公司下达的出口限制发布新的规定",
       },
       loading: false,
     };
