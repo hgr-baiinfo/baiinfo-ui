@@ -1,9 +1,7 @@
 # Card
-卡片组件
-
 <common-code-format>
   <docsComponents-BiCard-index slot="source"></docsComponents-BiCard-index>
-
+ 
 <<< @/docs/.vuepress/components/docsComponents/BiCard/index.vue
 </common-code-format>
 

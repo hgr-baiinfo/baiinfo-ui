@@ -19,6 +19,7 @@
         :loading="loading"
         :showPreAndNext="false"
         :showCollection="false"
+        :showCount="false"
         :defaultProps="newDialogProps"
         @close="dialogCloseFn"
     >

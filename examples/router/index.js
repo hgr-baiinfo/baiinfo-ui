@@ -36,6 +36,14 @@ const routes = [
         path: "/news-dialog",
         component: () => import("../views/news-dialog/index.vue"),
       },
+      {
+        path: "/utils",
+        component: () => import("../views/utils/index.vue"),
+      },
+      {
+        path: "/empty",
+        component: () => import("../views/empty/index.vue"),
+      },
     ],
   },
 ];

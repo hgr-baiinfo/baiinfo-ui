@@ -15,17 +15,13 @@
           <span>{{ dialogInfo[mergedProps.addTime] }}</span>
           <span>{{ dialogInfo[mergedProps.keywords] }}</span>
         </div>
-        <div class="right">
-          {{
-            dialogInfo[mergedProps.browseCount]
-              ? dialogInfo[mergedProps.browseCount]
-              : 0
-          }}&nbsp;&nbsp;阅读
+        <div class="right" >
+          <span v-if="showCount && dialogInfo[mergedProps.browseCount]">{{dialogInfo[mergedProps.browseCount]}}&nbsp;&nbsp;阅读</span>
         </div>
       </div>
       <div class="dialog-content">
         <div class="title">
-          <span>{{ dialogInfo[mergedProps.newsTitle] }}</span>
+          <span v-html="dialogInfo[mergedProps.newsTitle]" ></span>
           <img
             :src="collectionSrc"
             alt=""
@@ -98,6 +94,10 @@ export default {
       default: true,
     },
     showCollection: {
+      type: Boolean,
+      default: true,
+    },
+    showCount: {
       type: Boolean,
       default: true,
     },

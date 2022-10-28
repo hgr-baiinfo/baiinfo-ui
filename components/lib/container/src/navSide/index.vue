@@ -49,6 +49,16 @@ export default {
           name: "新闻内容弹窗",
           index: "/news-dialog",
         },
+        {
+          icon: "Utils",
+          name: "工具函数",
+          index: "/utils",
+        },
+        {
+          icon: "Empty",
+          name: "暂无数据",
+          index: "/empty",
+        },
       ],
       router: true,
       defaultActive: "",

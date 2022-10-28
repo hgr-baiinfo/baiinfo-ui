@@ -9,16 +9,17 @@
 
 
 ## Attributes
-|  参数  | 说明   | 类型          | 是否必要  | 默认值     | 可选参数                  |
-|  ----  |------|-------------|-------|---------|-----------------------|
-| visible  | 是否显示 Dialog | Boolean      | true | false | -  |
-| dialogInfo  | 新闻弹窗参数 | Object     |   true  |                  详见dialogInfo     | -|
-| defaultProps  | dialogInfo的props | Object    | true    |            详见defaultProps      | -|
-| loading  | 加载内容loading | Boolean    | false    |            -      | -|
-| change  | 上/下一篇 | event    | false    |      -            | function(type, info){}|
-| collection  | 收藏 | event    | false    |      -            | function(value, info){}|
-| showPreAndNext  | 是否展示上一篇下一篇 | boolean    | -    |      true           | |
-| showCollection  | 是否展收藏按钮 | boolean    | -    |      true           | |
+| 参数             | 说明               | 类型          | 是否必要  | 默认值     | 可选参数                  |
+|----------------|------------------|-------------|-------|---------|-----------------------|
+| visible        | 是否显示 Dialog      | Boolean      | true | false | -  |
+| dialogInfo     | 新闻弹窗参数           | Object     |   true  |                  详见dialogInfo     | -|
+| defaultProps   | dialogInfo的props | Object    | true    |            详见defaultProps      | -|
+| loading        | 加载内容loading      | Boolean    | false    |            -      | -|
+| change         | 上/下一篇            | event    | false    |      -            | function(type, info){}|
+| collection     | 收藏               | event    | false    |      -            | function(value, info){}|
+| showPreAndNext | 是否展示上一篇下一篇       | boolean    | -    |      true           | |
+| showCollection | 是否展收藏按钮          | boolean    | -    |      true           | |
+| showCount      | 是否展阅读数           | boolean    | -    |      true           | |
 
 ###  defaultProps
 |  参数           | 说明       |    类型   |  默认值       |

@@ -8,6 +8,7 @@
       :loading="loading"
       @change="articleChange"
       :defaultProps="newDialogProps"
+
       @collection="toggleCollection"
       @close="dialogCloseFn"
     >
@@ -21,6 +22,7 @@
       :loading="loading"
       :showPreAndNext="false"
       :showCollection="false"
+      :showCount="false"
       :defaultProps="newDialogProps"
       @close="dialogCloseFn"
     >
@@ -44,7 +46,7 @@ export default {
         content: "cont",
       },
       dialogInfo: {
-        newsTitle: "美政府酝酿新规扩大打压中国芯片 中国专家解读",
+        newsTitle: "<p style='color:red'>美政府酝酿新规扩大打压中国芯片 中国专家解读</p>",
         is: false,
         key: "关键字：新规扩大打压中国芯片",
         so: "新闻中心",
@@ -64,7 +66,7 @@ export default {
     openDialog() {
       this.visible = true;
       this.dialogInfo = {
-        newsTitle: "美政府酝酿新规扩大打压中国芯片 中国专家解读",
+        newsTitle: "<p style='color:red'>美政府酝酿新规扩大打压中国芯片 中国专家解读</p>",
         is: false,
         key: "关键字：新规扩大打压中国芯片",
         so: "新闻中心",

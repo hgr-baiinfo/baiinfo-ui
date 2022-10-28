@@ -18,3 +18,6 @@ Vue.use(BiBtnNav);
 
 import BiNewsDialog from "../../components/lib/news-dialog";
 Vue.use(BiNewsDialog);
+
+import BiEmpty from "../../components/lib/empty";
+Vue.use(BiEmpty);
