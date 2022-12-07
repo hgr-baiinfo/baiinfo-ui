@@ -32,7 +32,7 @@ const API = {
   version,
   install,
   utils,
-  ...MessageBox,
+  MessageBox,
   ...components,
 };
 
