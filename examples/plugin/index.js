@@ -21,3 +21,6 @@ Vue.use(BiNewsDialog);
 
 import BiEmpty from "../../components/lib/empty";
 Vue.use(BiEmpty);
+
+import BiMessageBox from "../../components/lib/message-box";
+Vue.use(BiMessageBox);

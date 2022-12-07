@@ -59,6 +59,11 @@ export default {
           name: "暂无数据",
           index: "/empty",
         },
+        {
+          icon: "MessageBox",
+          name: "弹框提示",
+          index: "/message-box",
+        },
       ],
       router: true,
       defaultActive: "",

@@ -44,6 +44,10 @@ const routes = [
         path: "/empty",
         component: () => import("../views/empty/index.vue"),
       },
+      {
+        path: "/message-box",
+        component: () => import("../views/message-box/index.vue"),
+      },
     ],
   },
 ];

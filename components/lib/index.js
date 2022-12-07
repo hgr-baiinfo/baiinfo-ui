@@ -5,6 +5,7 @@ import ButtonTab from "./button-tab";
 import ButtonNav from "./button-nav";
 import NewsDialog from "./news-dialog";
 import Empty from "./empty";
+import MessageBox from './message-box'
 import { version } from "../../package.json";
 import utils from './utils'
 const components = {
@@ -14,7 +15,8 @@ const components = {
   ButtonTab,
   ButtonNav,
   NewsDialog,
-  Empty
+  Empty,
+  MessageBox
 };
 
 const install = function (Vue) {

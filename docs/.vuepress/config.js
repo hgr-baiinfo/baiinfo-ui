@@ -17,6 +17,7 @@ module.exports = {
       "/componentDocs/newsDialog",
       "/componentDocs/utils",
       "/componentDocs/empty",
+      "/componentDocs/messageBox",
     ],
   },
   chainWebpack(config) {
