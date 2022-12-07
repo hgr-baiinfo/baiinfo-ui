@@ -15,8 +15,7 @@ const components = {
   ButtonTab,
   ButtonNav,
   NewsDialog,
-  Empty,
-  MessageBox
+  Empty
 };
 
 const install = function (Vue) {
@@ -33,6 +32,7 @@ const API = {
   version,
   install,
   utils,
+  ...MessageBox,
   ...components,
 };
 
