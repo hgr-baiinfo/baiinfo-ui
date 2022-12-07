@@ -17,6 +17,7 @@
         </div>
         <div class="right" >
           <span v-if="showCount && dialogInfo[mergedProps.browseCount]">{{dialogInfo[mergedProps.browseCount]}}&nbsp;&nbsp;阅读</span>
+          <img :src="closeImg" alt="" class="close-img" @click="close" />
         </div>
       </div>
       <div class="dialog-content">
@@ -30,7 +31,9 @@
             @click="toggleCollection(dialogInfo)"
           />
         </div>
-        <p class="content" v-html="dialogInfo[mergedProps.content]"></p>
+        <div class="content"  >
+          <div ref="content" v-html="dialogInfo[mergedProps.content]"></div>
+        </div>
       </div>
       <div class="dialog-footer">
         <p class="tips">声明：信息仅供参考，据此操作责任自负</p>
@@ -51,7 +54,7 @@
   </el-dialog>
 </template>
 <script>
-import { collection, collectionActive } from "../assets/img.js";
+import { collection, collectionActive,closeImg } from "../assets/img.js";
 import debounce from "lodash/debounce";
 let self;
 export default {
@@ -100,7 +103,7 @@ export default {
     showCount: {
       type: Boolean,
       default: true,
-    },
+    }
   },
   model: {
     prop: "show",
@@ -108,6 +111,18 @@ export default {
   },
   created() {
     self = this;
+  },
+  watch:{
+    loading:{
+      handler(val){
+        if(!val){
+          if( this.$refs.content){
+            this.$refs.content.scrollIntoView(true)
+          }
+        }
+      },
+      immediate:true,
+    }
   },
   computed: {
     preText() {
@@ -151,6 +166,11 @@ export default {
         this.$emit("close", val);
       },
     },
+  },
+  data(){
+    return {
+      closeImg
+    }
   },
   methods: {
     beforeClose() {
