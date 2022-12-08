@@ -48,6 +48,10 @@ const routes = [
         path: "/message-box",
         component: () => import("../views/message-box/index.vue"),
       },
+      {
+        path: "/info-card",
+        component: () => import("../views/info-card/index.vue"),
+      },
     ],
   },
 ];

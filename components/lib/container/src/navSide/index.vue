@@ -64,6 +64,11 @@ export default {
           name: "弹框提示",
           index: "/message-box",
         },
+        {
+          icon: "InfoCard",
+          name: "信息卡片",
+          index: "/info-card",
+        },
       ],
       router: true,
       defaultActive: "",

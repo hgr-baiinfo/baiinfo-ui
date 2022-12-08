@@ -24,3 +24,7 @@ Vue.use(BiEmpty);
 
 import MessageBox from '../../components/lib/message-box'
 Vue.prototype.$biMessageBox = MessageBox
+
+
+import BiInfoCard from "../../components/lib/info-card";
+Vue.use(BiInfoCard);
