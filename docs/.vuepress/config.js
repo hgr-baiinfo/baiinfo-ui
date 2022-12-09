@@ -18,6 +18,7 @@ module.exports = {
       "/componentDocs/utils",
       "/componentDocs/empty",
       "/componentDocs/messageBox",
+      "/componentDocs/infoCard",
     ],
   },
   chainWebpack(config) {
