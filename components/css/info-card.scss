@@ -68,7 +68,7 @@
       line-height: 40px;
       font-size: 14px;
       box-sizing: border-box;
-      padding: 0 20px;
+      padding: 0 10px;
       cursor: pointer;
       .title{
         color:#303133;
@@ -85,6 +85,14 @@
         background-color: #f8f8f9;
       }
     }
+    .gray-color{
+       .title{
+        color:#909999
+       }
+       .time{
+        color:#909999
+       }
+    }
   }
   .el-scrollbar__wrap{
     height:calc(100% + 17px)
@@ -93,6 +101,34 @@
       stroke:#c43233;
   }
 }
-.bi-info-card.bi-info-card.el-card{
+.bi-info-card.bi-info-card.el-card.content-border{
   border:none;
+  .infocard-content .card-row{
+    // border:1px solid #dcdfe6;
+    // border-top:none;
+    border-bottom:1px solid #dcdfe6;
+  }
+  .infocard-more{
+    border:1px solid #dcdfe6;
+    border-top:none;
+  }
+  .el-card__header{
+    padding:0;
+    .info-title{
+      padding-left:0;
+    }
+  }
+  .infocard-content{
+    border-left:1px solid #dcdfe6;
+    border-right:1px solid #dcdfe6;
+  }
+  .empty-text{
+    width: 100%;
+    text-align: center;
+    color:#909399;
+    position:absolute;
+    top: 50%;
+    padding:0;
+    margin:0;
+  }
 }

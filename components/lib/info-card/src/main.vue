@@ -23,21 +23,43 @@
         </el-tabs>
       </div>
     </div>
-    <div :style="{ height: contentHeight }" v-loading="loading">
-      <el-scrollbar style="height: 100%" class="infocard-content">
-        <div
-          v-for="(item, index) in tableList"
-          :key="index"
-          class="card-row"
-          @click="rowClick(item, index)"
-        >
-          <div class="title">{{ item[cardProps.listTitle] }}</div>
-          <div class="time">{{ item[cardProps.listTime] }}</div>
-        </div>
+    <div :style="{ height: contentHeight }">
+      <el-scrollbar
+        style="height: 100%"
+        class="infocard-content"
+        v-loading="loading"
+      >
+        <template v-if="showTableList.length">
+          <div
+            v-for="(item, index) in showTableList"
+            :key="index"
+            class="card-row"
+            @click="rowClick(item, index, $event)"
+            :class="{ 'gray-color': item.gray }"
+          >
+            <el-tooltip
+              v-if="overflowTips"
+              class="title"
+              effect="dark"
+              :open-delay="openDelay"
+              :content="item[cardProps.listTitle]"
+              :placement="tipsPlacement"
+            >
+              <span>{{ item[cardProps.listTitle] }}</span>
+            </el-tooltip>
+            <div class="title" v-else>
+              {{ item[cardProps.listTitle] }}
+            </div>
+            <div class="time">{{ item[cardProps.listTime] }}</div>
+          </div>
+        </template>
+        <p v-if="showTableList.length == 0 && !loading" class="empty-text">
+          {{ emptyText }}
+        </p>
       </el-scrollbar>
     </div>
     <div class="infocard-more">
-      <span>更多 ></span>
+      <span @click="clickMore(options)">更多 ></span>
     </div>
   </el-card>
 </template>
@@ -67,6 +89,7 @@ export default {
           tabItem: "columnName",
           listTitle: "listTitle",
           listTime: "listTime",
+          rowKey: "id",
         };
       },
     },
@@ -77,6 +100,22 @@ export default {
       type: Boolean,
       default: false,
     },
+    emptyText: {
+      type: String,
+      default: "暂无数据",
+    },
+    openDelay: {
+      type: Number,
+      default: 300,
+    },
+    overflowTips: {
+      type: Boolean,
+      default: true,
+    },
+    tipsPlacement: {
+      type: String,
+      default: "left-start",
+    },
   },
   data() {
     return {
@@ -86,6 +125,31 @@ export default {
       tableList: [],
       loading: false,
     };
+  },
+  computed: {
+    showTableList() {
+      //读取本地缓存
+      let isReadInfoCardIds =
+        JSON.parse(localStorage.getItem("isReadInfoCard")) || [];
+      let res = [];
+      res = this.tableList.map((item) => {
+        // 去除标题中的<font color="red"></font> UI表示标题颜色不对
+        item[this.cardProps.listTitle] = item[this.cardProps.listTitle].replace(
+          /<[^>]+>/g,
+          " "
+        );
+        if (
+          isReadInfoCardIds.findIndex(
+            (it2) => item[this.cardProps.rowKey] == it2
+          ) != -1
+        ) {
+          item.gray = true;
+        }
+        return item;
+      });
+
+      return res;
+    },
   },
   mounted() {
     this.getTabsMaxWidth();
@@ -98,11 +162,18 @@ export default {
       this.tableList = [];
       try {
         let res = await this.handleListFn(tab.index, params);
-        this.tableList = res;
+        // 添加置灰属性
+        this.tableList = res.map((item) => {
+          if (item.gray == undefined || item.gray == null) {
+            item.gray = false;
+          }
+          return item;
+        });
         this.loading = false;
       } catch (error) {
         console.log("error", error);
         this.loading = false;
+        this.tableList = [];
       }
     },
     getTabsMaxWidth() {
@@ -112,6 +183,25 @@ export default {
     },
     rowClick(row, index) {
       this.$emit("row-click", row, index);
+      row.gray = true;
+      this.handleLocalStorage(row, index);
+    },
+    clickMore(options) {
+      this.$emit("click-more", options);
+    },
+    handleLocalStorage(row) {
+      //读取本地缓存
+      let isReadInfoCardIds =
+        JSON.parse(localStorage.getItem("isReadInfoCard")) || [];
+      // 判断是否已经缓存过
+      let id = row[this.cardProps.rowKey];
+      if (isReadInfoCardIds.includes(id) > -1) {
+        isReadInfoCardIds.push(id);
+        localStorage.setItem(
+          "isReadInfoCard",
+          JSON.stringify(isReadInfoCardIds)
+        );
+      }
     },
   },
 };

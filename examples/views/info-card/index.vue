@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info-card-wrap">
     <div style="width: 380px">
       <bi-info-card
         :options="options"
@@ -10,6 +10,13 @@
     </div>
     <div style="width: 380px">
       <!-- <bi-info-card :options="options2" /> -->
+      <bi-info-card
+        :options="options"
+        :handleListFn="handleListFn"
+        :cardProps="cardProps"
+        @row-click="rowClick"
+        :contentBorder="true"
+      />
     </div>
   </div>
 </template>
@@ -393,6 +400,7 @@ export default {
         tabItem: "columnName",
         listTitle: "newsTitle",
         listTime: "updateTime",
+        rowKey: "id",
       },
     };
   },
@@ -678,3 +686,9 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.info-card-wrap {
+  padding: 20px;
+  background: #fff;
+}
+</style>
