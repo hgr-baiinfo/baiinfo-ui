@@ -404,7 +404,16 @@ export default {
       },
     };
   },
+  mounted() {
+    this.getData();
+  },
   methods: {
+    async getData() {
+      let { data: response } = await this.$http(
+        "/coop/public/channelCategory/getPollingChart"
+      );
+      console.log(response);
+    },
     handleListFn(index, item) {
       return new Promise((resolve) => {
         console.log("item", item);

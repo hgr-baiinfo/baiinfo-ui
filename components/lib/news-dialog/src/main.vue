@@ -15,23 +15,33 @@
           <span>{{ dialogInfo[mergedProps.addTime] }}</span>
           <span>{{ dialogInfo[mergedProps.keywords] }}</span>
         </div>
-        <div class="right" >
-          <span v-if="showCount && dialogInfo[mergedProps.browseCount]">{{dialogInfo[mergedProps.browseCount]}}&nbsp;&nbsp;阅读</span>
+        <div class="right">
+          <span v-if="showCount && dialogInfo[mergedProps.browseCount]"
+            >{{ dialogInfo[mergedProps.browseCount] }}&nbsp;&nbsp;阅读</span
+          >
           <img :src="closeImg" alt="" class="close-img" @click="close" />
         </div>
       </div>
       <div class="dialog-content">
         <div class="title">
-          <span v-html="dialogInfo[mergedProps.newsTitle]" ></span>
-          <img
-            :src="collectionSrc"
-            alt=""
-            v-if="showCollection"
-            class="star"
-            @click="toggleCollection(dialogInfo)"
-          />
+          <span v-html="dialogInfo[mergedProps.newsTitle]"></span>
+          <span class="operation">
+            <img
+              :src="shareImg"
+              class="share"
+              v-if="showShare"
+              @click="shareFn"
+            />
+            <img
+              :src="collectionSrc"
+              alt=""
+              v-if="showCollection"
+              class="star"
+              @click="toggleCollection(dialogInfo)"
+            />
+          </span>
         </div>
-        <div class="content"  >
+        <div class="content">
           <div ref="content" v-html="dialogInfo[mergedProps.content]"></div>
         </div>
       </div>
@@ -54,7 +64,12 @@
   </el-dialog>
 </template>
 <script>
-import { collection, collectionActive,closeImg } from "../assets/img.js";
+import {
+  collection,
+  collectionActive,
+  closeImg,
+  shareImg,
+} from "../assets/img.js";
 import debounce from "lodash/debounce";
 let self;
 export default {
@@ -100,10 +115,14 @@ export default {
       type: Boolean,
       default: true,
     },
+    showShare: {
+      type: Boolean,
+      default: false,
+    },
     showCount: {
       type: Boolean,
       default: true,
-    }
+    },
   },
   model: {
     prop: "show",
@@ -112,17 +131,17 @@ export default {
   created() {
     self = this;
   },
-  watch:{
-    loading:{
-      handler(val){
-        if(!val){
-          if( this.$refs.content){
-            this.$refs.content.scrollIntoView(true)
+  watch: {
+    loading: {
+      handler(val) {
+        if (!val) {
+          if (this.$refs.content) {
+            this.$refs.content.scrollIntoView(true);
           }
         }
       },
-      immediate:true,
-    }
+      immediate: true,
+    },
   },
   computed: {
     preText() {
@@ -167,10 +186,11 @@ export default {
       },
     },
   },
-  data(){
+  data() {
     return {
-      closeImg
-    }
+      closeImg,
+      shareImg,
+    };
   },
   methods: {
     beforeClose() {
@@ -197,6 +217,9 @@ export default {
       }
       self.$emit("change", type, obj);
     }, 100),
+    shareFn() {
+      this.$emit("share", this.dialogInfo);
+    },
     toggleCollection: debounce((dialogInfo) => {
       self.dialogInfo[self.mergedProps.isCollection] =
         !self.dialogInfo[self.mergedProps.isCollection];

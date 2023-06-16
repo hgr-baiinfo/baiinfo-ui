@@ -6,7 +6,7 @@ import App from "./App.vue";
 
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-
+import axios from 'axios';
 import router from "./router";
 import "../components/css/index.scss";
 import "./plugin";
@@ -17,7 +17,14 @@ Vue.use(ElementUI);
 // console.log(BUI);
 
 Vue.config.productionTip = false;
-
+const request = axios.create({
+  baseURL: 'https://www.fastmock.site/mock/ec7511e5be0f0916dc59c191e463a309/api',
+  headers: {
+    "Content-Type": "application/json;charset=UTF-8",
+  },
+  timeout: 20000,
+});
+Vue.prototype.$http = request;
 new Vue({
   router,
   render: (h) => h(App),
