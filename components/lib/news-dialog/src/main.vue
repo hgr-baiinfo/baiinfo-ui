@@ -213,6 +213,7 @@ export default {
   methods: {
     initTable() {
       let t = this.$refs.content.querySelector("table");
+      if (!t) return;
       let p = t.parentNode;
       p.className = "table-parent";
       let exportNode = document.createElement("span");
