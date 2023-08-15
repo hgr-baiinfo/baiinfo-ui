@@ -126,6 +126,31 @@
       p {
         line-height: 1.6;
       }
+      .table-parent {
+        position: relative;
+        padding-top: 32px;
+        .export-table {
+          font-weight: 500;
+          line-height: 28px;
+          padding: 0px 6px;
+          font-size: 14px;
+          color: #75777b;
+          border: 1px solid #c4c4c4;
+          background-color: #f8f8f9;
+          display: inline-block;
+          cursor: pointer;
+          display: none;
+          margin-bottom: 4px;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        &:hover {
+          .export-table {
+            display: inline-block;
+          }
+        }
+      }
     }
   }
   .bottom-wrap {

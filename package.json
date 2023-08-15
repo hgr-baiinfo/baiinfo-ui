@@ -1,6 +1,6 @@
 {
   "name": "baiinfo-ui2",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "基于vue的管理端组件库",
   "main": "dist/index.umd.js",
   "keywords": [
@@ -29,6 +29,7 @@
     "baiinfo-ui2": "0.2.7",
     "core-js": "^3.6.5",
     "element-ui": "=2.15.6",
+    "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1"

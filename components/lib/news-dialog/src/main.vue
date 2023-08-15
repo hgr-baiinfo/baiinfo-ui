@@ -81,6 +81,7 @@ import {
   shareImg,
 } from "../assets/img.js";
 import debounce from "lodash/debounce";
+import html2canvas from "html2canvas";
 let self;
 export default {
   name: "bi-news-dialog",
@@ -198,6 +199,11 @@ export default {
       },
     },
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.initTable();
+    });
+  },
   data() {
     return {
       closeImg,
@@ -205,6 +211,36 @@ export default {
     };
   },
   methods: {
+    initTable() {
+      let t = this.$refs.content.querySelector("table");
+      let p = t.parentNode;
+      p.className = "table-parent";
+      let exportNode = document.createElement("span");
+      exportNode.innerHTML = "导出图片";
+      exportNode.className = "export-table";
+      p.insertBefore(exportNode, t);
+      exportNode.addEventListener("click", () => {
+        this.exportTablePng();
+      });
+    },
+    exportTablePng() {
+      let table = this.$refs.content.querySelector("table");
+      html2canvas(table).then((canvas) => {
+        // 将表格转换为 Canvas 元素
+        const image = canvas.toDataURL("image/png");
+        this.downLoadImage(image, this.dialogInfo[this.mergedProps.newsTitle]);
+      });
+    },
+    downLoadImage(base64Data, fileName) {
+      const link = document.createElement("a");
+      link.href = base64Data;
+      link.download = fileName;
+      link.target = "_blank";
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
     beforeClose() {
       this.$emit("close", false);
     },
