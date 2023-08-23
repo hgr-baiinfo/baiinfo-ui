@@ -149,6 +149,7 @@ export default {
         if (!val) {
           if (this.$refs.content) {
             this.$refs.content.scrollIntoView(true);
+            this.initTable();
           }
         }
       },
@@ -213,6 +214,7 @@ export default {
   methods: {
     initTable() {
       let t = this.$refs.content.querySelector("table");
+      console.log("t", t);
       if (!t) return;
       let p = t.parentNode;
       p.className = "table-parent";

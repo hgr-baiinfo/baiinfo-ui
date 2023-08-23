@@ -128,7 +128,15 @@
       }
       .table-parent {
         position: relative;
-        padding-top: 32px;
+        .tool-tips {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+        table {
+          margin-top: 31px;
+        }
+        // padding-top: 32px;
         .export-table {
           font-weight: 500;
           line-height: 28px;
@@ -142,7 +150,7 @@
           display: none;
           margin-bottom: 4px;
           position: absolute;
-          top: 0;
+          top: -31px;
           left: 0;
         }
         &:hover {
