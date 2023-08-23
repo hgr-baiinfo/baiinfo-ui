@@ -1,6 +1,6 @@
 {
   "name": "baiinfo-ui2",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "基于vue的管理端组件库",
   "main": "dist/index.umd.js",
   "keywords": [
