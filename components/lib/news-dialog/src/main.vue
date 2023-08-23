@@ -82,6 +82,7 @@ import {
 } from "../assets/img.js";
 import debounce from "lodash/debounce";
 import html2canvas from "html2canvas";
+import { Loading } from "element-ui";
 let self;
 export default {
   name: "bi-news-dialog",
@@ -149,7 +150,9 @@ export default {
         if (!val) {
           if (this.$refs.content) {
             this.$refs.content.scrollIntoView(true);
-            this.initTable();
+            setTimeout(() => {
+              this.initTable();
+            }, 800);
           }
         }
       },
@@ -214,13 +217,16 @@ export default {
   methods: {
     initTable() {
       let t = this.$refs.content.querySelector("table");
-      console.log("t", t);
       if (!t) return;
       let p = t.parentNode;
       p.className = "table-parent";
       let exportNode = document.createElement("span");
+      let tInfo = t.getBoundingClientRect();
+      let pInfo = p.getBoundingClientRect();
+      let diff = Math.floor(Math.abs((pInfo.width - tInfo.width) / 2));
       exportNode.innerHTML = "导出图片";
       exportNode.className = "export-table";
+      exportNode.style.right = diff + "px";
       p.insertBefore(exportNode, t);
       exportNode.addEventListener("click", () => {
         this.exportTablePng();
@@ -228,10 +234,15 @@ export default {
     },
     exportTablePng() {
       let table = this.$refs.content.querySelector("table");
+      let loadingInstance = Loading.service({ fullscreen: true });
       html2canvas(table).then((canvas) => {
         // 将表格转换为 Canvas 元素
         const image = canvas.toDataURL("image/png");
         this.downLoadImage(image, this.dialogInfo[this.mergedProps.newsTitle]);
+        this.$nextTick(() => {
+          // 以服务的方式调用的 Loading 需要异步关闭
+          loadingInstance.close();
+        });
       });
     },
     downLoadImage(base64Data, fileName) {
