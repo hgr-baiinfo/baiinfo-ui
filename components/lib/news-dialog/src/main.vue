@@ -228,7 +228,6 @@ export default {
       exportNode.innerHTML = "导出图片";
       exportNode.className = "export-table";
       exportNode.style.background = `url(${exportImg}) no-repeat 5px center #F5F7FA`;
-      // exportNode.style.backgroundPosition = "0, 5px";
       exportNode.style.right = diff + "px";
 
       p.insertBefore(exportNode, t);
