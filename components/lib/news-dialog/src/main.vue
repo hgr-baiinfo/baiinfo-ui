@@ -79,6 +79,7 @@ import {
   collectionActive,
   closeImg,
   shareImg,
+  exportImg,
 } from "../assets/img.js";
 import debounce from "lodash/debounce";
 import html2canvas from "html2canvas";
@@ -226,7 +227,10 @@ export default {
       let diff = Math.floor(Math.abs((pInfo.width - tInfo.width) / 2));
       exportNode.innerHTML = "导出图片";
       exportNode.className = "export-table";
+      exportNode.style.background = `url(${exportImg}) no-repeat 5px center #F5F7FA`;
+      // exportNode.style.backgroundPosition = "0, 5px";
       exportNode.style.right = diff + "px";
+
       p.insertBefore(exportNode, t);
       exportNode.addEventListener("click", () => {
         this.exportTablePng();
