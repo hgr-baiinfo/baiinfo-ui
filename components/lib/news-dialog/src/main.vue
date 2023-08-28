@@ -8,7 +8,7 @@
     v-if="dialogVisible"
     :before-close="beforeClose"
   >
-    <div v-loading="loading">
+    <div v-loading="loading || canvasLoading" >
       <div class="dialog-header">
         <div class="left gray">
           {{ dialogInfo[mergedProps.category] }}
@@ -71,6 +71,7 @@
         </div>
       </div>
     </div>
+
   </el-dialog>
 </template>
 <script>
@@ -83,7 +84,6 @@ import {
 } from "../assets/img.js";
 import debounce from "lodash/debounce";
 import html2canvas from "html2canvas";
-import { Loading } from "element-ui";
 let self;
 export default {
   name: "bi-news-dialog",
@@ -213,6 +213,7 @@ export default {
     return {
       closeImg,
       shareImg,
+      canvasLoading:false
     };
   },
   methods: {
@@ -237,15 +238,18 @@ export default {
     },
     exportTablePng() {
       let table = this.$refs.content.querySelector("table");
-      let loadingInstance = Loading.service({ fullscreen: true });
+      this.canvasLoading = true;
+      let that = this;
       html2canvas(table).then((canvas) => {
         // 将表格转换为 Canvas 元素
         const image = canvas.toDataURL("image/png");
         this.downLoadImage(image, this.dialogInfo[this.mergedProps.newsTitle]);
         this.$nextTick(() => {
           // 以服务的方式调用的 Loading 需要异步关闭
-          loadingInstance.close();
+          that.canvasLoading = false;
         });
+      }).catch(()=>{
+        that.canvasLoading = false;
       });
     },
     downLoadImage(base64Data, fileName) {
